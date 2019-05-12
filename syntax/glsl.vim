@@ -17,7 +17,7 @@ syn region  glslComment  matchgroup=glslCommentStart start="/\*" end="\*/" exten
 
 " Preprocessor
 syn region  glslPreCondit       start="^\s*#\s*\(if\|ifdef\|ifndef\|else\|elif\|endif\)" skip="\\$" end="$" keepend
-syn region  glslDefine          start="^\s*#\s*\(define\|undef\)" skip="\\$" end="$" keepend
+syn region  glslDefine          start="^\s*#\s*\(define\|undef\|include\)" skip="\\$" end="$" keepend
 syn keyword glslTokenConcat     ##
 syn keyword glslPredefinedMacro __LINE__ __FILE__ __VERSION__ GL_ES
 syn region  glslPreProc         start="^\s*#\s*\(error\|pragma\|extension\|version\|line\)" skip="\\$" end="$" keepend
@@ -640,6 +640,74 @@ syn keyword glslBuiltinFunction unpackUnorm2x16
 syn keyword glslBuiltinFunction unpackUnorm4x8
 syn keyword glslBuiltinFunction usubBorrow
 
+" for unity 
+syn keyword shaderType fixed
+syn keyword shaderType fixed2
+syn keyword shaderType fixed3
+syn keyword shaderType fixed4
+syn keyword shaderType half
+syn keyword shaderType half2
+syn keyword shaderType half3
+syn keyword shaderType half4
+syn keyword shaderType SurfaceOutput
+syn keyword shaderType bool
+syn keyword shaderType samplerCUBE
+syn keyword shaderType sampler2D
+syn keyword shaderType sampler3D
+syn keyword shaderType void
+syn keyword shaderType 2D
+syn keyword shaderType Color
+syn keyword shaderType struct
+syn keyword shaderType Float
+
+syn keyword shaderStatement Shader
+syn keyword shaderStatement Category
+syn keyword shaderStatement Properties
+syn keyword shaderStatement SubShader
+syn keyword shaderStatement Pass
+syn keyword shaderStatement Tags
+syn keyword shaderStatement LOD
+syn keyword shaderStatement Fallback
+syn keyword shaderStatement Material
+syn keyword shaderStatement Lighting
+syn keyword shaderStatement Cull
+syn keyword shaderStatement ZTest
+syn keyword shaderStatement ZWrite
+syn keyword shaderStatement Fog
+syn keyword shaderStatement AlphaTest
+syn keyword shaderStatement BindChannels
+syn keyword shaderStatement Blend
+syn keyword shaderStatement ColorMask
+syn keyword shaderStatement Offset
+syn keyword shaderStatement SeparateSpecular
+syn keyword shaderStatement ColorMaterial
+syn keyword shaderStatement UsePass
+
+syn keyword shaderFunction length
+syn keyword shaderFunction cross
+syn keyword shaderFunction pow
+syn keyword shaderFunction tex2D
+syn keyword shaderFunction UnpackNormal
+syn keyword shaderFunction saturate
+syn keyword shaderFunction dot
+syn keyword shaderFunction normalize
+syn keyword shaderFunction clip
+syn keyword shaderFunction frac
+syn keyword shaderFunction mul
+syn keyword shaderFunction SetTexture
+syn keyword shaderFunction combine
+syn keyword shaderFunction UnityPixelSnap
+syn keyword shaderFunction UnityObjectToClipPos
+syn keyword shaderFunction TRANSFORM_TEX
+syn keyword shaderFunction UNITY_TRANSFER_FOG
+
+syn keyword shaderCGProgram CGPROGRAM
+syn keyword shaderCGProgram ENDCG
+
+syn keyword shaderMacro include
+
+" for unity end 
+
 hi def link glslConditional     Conditional
 hi def link glslRepeat          Repeat
 hi def link glslStatement       Statement
@@ -667,6 +735,12 @@ hi def link glslBuiltinConstant Constant
 hi def link glslBuiltinFunction Function
 hi def link glslBuiltinVariable Identifier
 hi def link glslSwizzle         Identifier
+
+hi def link shaderType            Type
+hi def link shaderStatement       Statement
+hi def link shaderCGProgram       glslPredefinedMacro 
+hi def link shaderMacro           glslPredefinedMacro 
+hi def link shaderFunction        Function
 
 if !exists("b:current_syntax")
   let b:current_syntax = "glsl"
